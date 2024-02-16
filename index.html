@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>
+      Frontend Mentor | Newsletter sign-up form with success message
+    </title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sign-up form start -->
+    <div class="form">
+      <div class="form-img mobile">
+        <img
+          src="./assets/images/illustration-sign-up-mobile.svg"
+          alt="image"
+        />
+      </div>
+      <div class="form-img desktop">
+        <img
+          src="./assets/images/illustration-sign-up-desktop.svg"
+          alt="image"
+        />
+      </div>
+      <div class="form-content">
+        <h1>Stay updated!</h1>
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        <ul>
+          <li>
+            <img src="./assets/images/icon-list.svg" alt="" />
+            <p>Product discovery and building what matters</p>
+          </li>
+          <li>
+            <img src="./assets/images/icon-list.svg" alt="" />
+            <p>Measuring to ensure updates are a success</p>
+          </li>
+          <li>
+            <img src="./assets/images/icon-list.svg" alt="" />
+            <p>And much more!</p>
+          </li>
+        </ul>
+        <div class="field-control">
+          <label for="#email">
+            <div class="label-title">
+              <span>Email address</span>
+              <span class="error">Valid email required</span>
+            </div>
+            <input type="email" id="email" placeholder="email@company.com" />
+          </label>
+          <button class="btn-subcribe">Subscribe to monthly newsletter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stay updated! Join 60,000+ product managers receiving monthly updates on:
+    Product discovery and building what matters Measuring to ensure updates are
+    a success And much more! Email address email@company.com Subscribe to
+    monthly newsletter -->
+
+    <!-- Sign-up form end -->
+
+    <!-- Success message start -->
+    <div class="success-form">
+      <img src="./assets//images/icon-success.svg" alt="image" />
+      <h1>Thanks for subscribing!</h1>
+      <p>
+        A confirmation email has been sent to <span>ash@loremcompany.com</span>.
+        Please open it and click the button inside to confirm your subscription.
+      </p>
+      <button class="btn-dismiss">Dismiss message</button>
+    </div>
+
+    <!-- Thanks for subscribing! A confirmation email has been sent to
+    ash@loremcompany.com. Please open it and click the button inside to confirm
+    your subscription. Dismiss message -->
+
+    <!-- Success message end -->
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Datto`098</a>.
+    </div>
+
+    <script>
+      const btnDismiss = document.querySelector(".btn-dismiss");
+      btnDismiss.addEventListener("click", () => {
+        document.querySelector(".success-form").classList.remove("active");
+        document.querySelector(".form").classList.remove("active");
+      });
+
+      const btnSubscribe = document.querySelector(".btn-subcribe");
+      btnSubscribe.addEventListener("click", () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const inputEmail = document.querySelector("#email");
+        const error = document.querySelector(".error");
+        const isValidEmail = emailRegex.test(inputEmail.value);
+
+        if (isValidEmail) {
+          document.querySelector(".success-form").classList.add("active");
+          document.querySelector(".form").classList.add("active");
+          inputEmail.classList.remove("input-error");
+          error.classList.remove("active");
+          inputEmail.value = "";
+        } else {
+          inputEmail.classList.add("input-error");
+          error.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>
